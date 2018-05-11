@@ -78,11 +78,10 @@ router.post("/add",middleware.checkOwnership,upload.single('image'),function(req
         }
     });
     });
-    
-    
-    
-
     });
+
+
+
 /*Delete route for deleting a product*/
 router.delete("/:id",middleware.checkOwnership,function(req,res){
     console.log("Reached here");
