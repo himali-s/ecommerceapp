@@ -115,7 +115,7 @@ router.get("/:id/edit",middleware.checkOwnership,function(req,res){
     });
 });
 
-
+/*Post route for editing a product*/
 router.put("/:id", middleware.checkOwnership,upload.single('image'), function(req, res){
     Product.findById( req.params.id, async function(err, pdt){
         if(err){
@@ -141,62 +141,6 @@ router.put("/:id", middleware.checkOwnership,upload.single('image'), function(re
         }
     });
 });
-
-
-/*Post route for editing a product*/
-/*
-router.put("/:id",middleware.checkOwnership,upload.single('image'),function(req,res)
-{   
-        var newData={name:req.body.name,productimage1:image,price:req.body.price,description:req.body.desc};
-        Product.findById(req.params.id,{$set:newData},function(err,product){
-        if(err)
-        {
-            res.redirect("/admin")
-        }
-        else
-        {
-            if (req.file)
-            {
-                try {
-                  await cloudinary.v2.uploader.destroy(product.imageId);
-                  var result = await cloudinary.v2.uploader.upload(req.file.path);
-                  product.imageId = result.public_id;
-                  product.image = result.secure_url;
-              } catch(err) {
-                  req.flash("error", err.message);
-                  return res.redirect("back");
-              }
-            }
-            
-            
-            
-            req.flash("success","Successfully updated the product hre")
-            res.redirect("/admin/");
-        }
-     
-         });
-});*/
-     //console.log(req.body.name);
-   /*  else
-     {
-         newData={name:req.body.name,price:req.body.price,description:req.body.desc};
-     
-     
-     Product.findByIdAndUpdate(req.params.id,{$set:newData},function(err,updatedCamp){
-        if(err)
-        {
-            res.redirect("/admin")
-        }
-        else
-        {
-            req.flash("success","Successfully updated the product")
-            res.redirect("/admin/");
-        }
-    });
-     }
-     
-    
-});*/
 
 //getting data from mongodb for AJAX call
 router.post("/grab",function(req,res){
