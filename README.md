@@ -1,2 +1,2 @@
 # ecommerceapp
-ECommerceApp using MEAN Stack
+ECommerceApp using MEN Stack
